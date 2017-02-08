@@ -8,17 +8,31 @@
     <div id="root">
         <input type="text" id="name" v-model="message">
         <p>The value of the input is {{ message }}</p>
+
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+        <input type="text" id="addname">
+        <button id="button">Add Name</button>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
     <script>
         let data = {
-            message: 'Hello World'
+            message: 'Hello World',
+            names: ['Ani', 'Avi', 'Amma', 'Accha']
         };
 
-        new Vue({
+        let app = new Vue({
             el: '#root',
-            data
+            data,
+            mounted() {
+                document.querySelector('#button').addEventListener('click', () => {
+                    let name = document.querySelector('#addname');
+                    app.names.push(name.value);
+                    name.value = '';
+                })
+            }
         })
     </script>
 </body>
