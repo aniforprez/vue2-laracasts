@@ -3,25 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
+    <style>
+        .colorRed {
+            color: red;
+        }
+        .is-loading {
+            background: red;
+        }
+    </style>
 </head>
 <body>
     <div id="root">
         <input type="text" id="name" v-model="message">
         <p>The value of the input is {{ message }}</p>
+        <hr>
 
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
         <input type="text" v-model="newName">
         <button @click="addName">Add Name</button>
+        <hr>
+
+        <div>
+            <button :title="title">Hover Over</button>
+            <h1 :class="className">Hello World</h1>
+            <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Class</button>
+            <button :disabled="isDisabled" @click="toggleDisabled">Toggle Disabled</button>
+        </div>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
     <script>
         let data = {
+            title: 'This is some bullshit',
             newName: '',
             message: 'Hello World',
-            names: ['Ani', 'Avi', 'Amma', 'Accha']
+            names: ['Ani', 'Avi', 'Amma', 'Accha'],
+            className: 'colorRed',
+            isLoading: false,
+            isDisabled: false
         };
 
         let app = new Vue({
@@ -31,6 +53,12 @@
                 addName() {
                     this.names.push(this.newName);
                     this.newName = '';
+                },
+                toggleClass() {
+                    this.isLoading = !this.isLoading;
+                },
+                toggleDisabled() {
+                    this.isDisabled = !this.isDisabled;
                 }
             }
         })
