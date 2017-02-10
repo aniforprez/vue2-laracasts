@@ -1,6 +1,14 @@
+Vue.component('progress-view', {
+	data() {
+		return {
+			progressDone: 50
+		};
+	}
+});
+
 Vue.component('modal2', {
 	template: `
-		<div class="modal is-active">
+		<div class="modal">
 			<div class="modal-background"></div>
 			<div class="modal-card">
 				<header class="modal-card-head">
