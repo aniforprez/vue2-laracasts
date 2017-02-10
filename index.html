@@ -19,6 +19,15 @@
 
 <body>
 	<div id="root" class="container" style="padding-top: 20px">
+		<modal2>
+			<template slot="header">Title Foo</template>
+			<div slot="content">Text content up in this mother f***ing ass</div>
+			<template slot="footer">
+				<a class="button is-success">Save changes</a>
+				<a class="button">Cancel</a>
+			</template>
+		</modal2>
+
 		<coupon @coupon-applied="onCouponApplied"></coupon>
 		<h1 v-if="couponApplied">The code {{ couponCode }} was applied</h1>
 		<hr>
