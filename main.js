@@ -1,3 +1,17 @@
+Vue.component('modal', {
+	template: `
+		<div class="modal is-active">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<div class="box">
+					<slot></slot>
+				</div>
+			</div>
+			<button class="modal-close" @click="$emit('close')"></button>
+		</div>
+	`
+})
+
 Vue.component('message', {
 	props: ['title', 'body'],
 	template: `
@@ -57,7 +71,8 @@ let app = new Vue({
 			{ description: 'Do nothing', completed: true },
 			{ description: 'Do anything', completed: true },
 			{ description: 'Whatever', completed: false }
-		]
+		],
+		showModal: false
 	},
 	methods: {
 		addName() {

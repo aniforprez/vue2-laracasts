@@ -19,13 +19,12 @@
 
 <body>
 	<div id="root" class="container">
-		<div class="modal">
-			<div class="modal-background"></div>
-			<div class="modal-content">
-				<!-- Any other Bulma elements you want -->
-			</div>
-			<button class="modal-close"></button>
-		</div>
+		<button class="button" @click="showModal = true">Show Modal</button>
+		<modal v-show="showModal" @close="showModal = false">
+			<p>
+				What up homie
+			</p>
+		</modal>
 		<hr>
 
 		<message title="Hello World" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></message>
