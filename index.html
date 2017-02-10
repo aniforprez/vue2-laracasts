@@ -19,6 +19,19 @@
 
 <body>
 	<div id="root" class="container">
+		<tabs>
+			<tab name="Something" :selected="true">
+				<h1>Something text</h1>
+			</tab>
+			<tab name="Everything">
+				<h1>Everything text</h1>
+			</tab>
+			<tab name="Nothing">
+				<h1>Nothing text</h1>
+			</tab>
+		</tabs>
+		<hr>
+
 		<button class="button" @click="showModal = true">Show Modal</button>
 		<modal v-show="showModal" @close="showModal = false">
 			<p>

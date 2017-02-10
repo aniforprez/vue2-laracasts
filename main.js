@@ -1,3 +1,61 @@
+Vue.component('tabs', {
+	template: `
+		<div>
+			<div class="tabs">
+				<ul>
+					<li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+						<a href="#" @click="switchToTab(tab)">{{ tab.name }}</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="tab-content">
+				<slot></slot>
+			</div>
+		</div>
+	`,
+	data() {
+		return {
+			tabs: []
+		};
+	},
+	methods: {
+		switchToTab(selectedTab) {
+			this.tabs.forEach((tab) => {
+				tab.isActive = (tab.name == selectedTab.name);
+			});
+			selectedTab.selected = true;
+		}
+	},
+	created() {
+		this.tabs = this.$children;
+	}
+});
+
+Vue.component('tab', {
+	template: `
+		<div v-show="isActive"><slot></slot></div>
+	`,
+	props: {
+		name: {
+			required: true
+		},
+		selected: {
+			default: false
+		}
+	},
+	data() {
+		return {
+			'isActive': false
+		}
+	},
+
+	mounted() {
+		this.isActive = this.selected;
+	}
+})
+
+
 Vue.component('modal', {
 	template: `
 		<div class="modal is-active">
