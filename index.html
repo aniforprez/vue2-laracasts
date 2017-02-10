@@ -32,6 +32,17 @@
             <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Class</button>
             <button :disabled="isDisabled" @click="toggleDisabled">Toggle Disabled</button>
         </div>
+        <hr>
+
+        <h1>{{ reversedMessage }}</h1>
+        <h2>All Tasks</h2>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+        <h2>Incomplete Tasks</h2>
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
@@ -43,7 +54,13 @@
             names: ['Ani', 'Avi', 'Amma', 'Accha'],
             className: 'colorRed',
             isLoading: false,
-            isDisabled: false
+            isDisabled: false,
+            tasks: [
+                { description: 'Do something', completed: false },
+                { description: 'Do nothing', completed: true },
+                { description: 'Do anything', completed: true },
+                { description: 'Whatever', completed: false }
+            ]
         };
 
         let app = new Vue({
@@ -59,6 +76,14 @@
                 },
                 toggleDisabled() {
                     this.isDisabled = !this.isDisabled;
+                }
+            },
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
+                },
+                incompleteTasks() {
+                    return this.tasks.filter((task) => !task.completed);
                 }
             }
         })
