@@ -1,3 +1,18 @@
+Vue.component('task-list', {
+    template: '<ul><task v-for="task in tasks">{{ task.description }}</task></ul>',
+
+    data() {
+        return {
+            tasks: [
+                { description: 'Do something', completed: false },
+                { description: 'Do nothing', completed: true },
+                { description: 'Do anything', completed: true },
+                { description: 'Whatever', completed: false }
+            ]
+        }
+    }
+})
+
 Vue.component('task', {
     template: '<li><slot></slot></li>'
 });
