@@ -18,7 +18,11 @@
 </head>
 
 <body>
-	<div id="root" class="container">
+	<div id="root" class="container" style="padding-top: 20px">
+		<coupon @coupon-applied="onCouponApplied"></coupon>
+		<h1 v-if="couponApplied">The code {{ couponCode }} was applied</h1>
+		<hr>
+
 		<tabs>
 			<tab name="Something" :selected="true">
 				<h1>Something text</h1>

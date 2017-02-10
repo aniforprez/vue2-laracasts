@@ -1,3 +1,19 @@
+Vue.component('coupon', {
+	data() {
+		return {
+			code: ''
+		}
+	},
+	template: `<input class="input" @blur="onCouponApplied" v-model="code">`,
+	methods: {
+		onCouponApplied() {
+			if(this.code) {
+				this.$emit('coupon-applied', this.code);
+			}
+		}
+	}
+});
+
 Vue.component('tabs', {
 	template: `
 		<div>
@@ -130,7 +146,9 @@ let app = new Vue({
 			{ description: 'Do anything', completed: true },
 			{ description: 'Whatever', completed: false }
 		],
-		showModal: false
+		showModal: false,
+		couponApplied: false,
+		couponCode: ''
 	},
 	methods: {
 		addName() {
@@ -142,6 +160,10 @@ let app = new Vue({
 		},
 		toggleDisabled() {
 			this.isDisabled = !this.isDisabled;
+		},
+		onCouponApplied(couponCode) {
+			this.couponApplied = true;
+			this.couponCode = couponCode;
 		}
 	},
 	computed: {
