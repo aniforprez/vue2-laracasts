@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="message">
 		<slot></slot>
 	</div>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style>
-
+.message {
+	background-color: #e3e3e3;
+}
 </style>
