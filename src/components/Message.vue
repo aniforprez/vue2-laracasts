@@ -5,13 +5,13 @@
 </template>
 
 <script>
-export default {
-	name: 'message'
-}
-</script>
+	export default {
+		name: 'message'
+	}
+	</script>
 
-<style>
-.message {
-	background-color: #e3e3e3;
-}
+	<style>
+	.message {
+		background-color: #e3e3e3;
+	}
 </style>
